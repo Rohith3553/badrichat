@@ -2,121 +2,59 @@
 <html lang="te">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Badrinath Chat Centre</title>
+    <title>For Vinni Garu</title>
     <style>
-        /* CSS Modal Fixes */
-        :root { --main-red: #d35400; --gold: #f1c40f; --bg: #fffaf0; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; text-align: center; }
-        
-        header { background: var(--main-red); color: white; padding: 40px 20px; border-bottom: 8px solid var(--gold); }
-        .tagline { font-style: italic; color: var(--gold); font-weight: bold; }
-
-        .menu-container { display: flex; flex-wrap: wrap; justify-content: center; padding: 30px; gap: 20px; }
-        .food-card { 
-            background: white; border-radius: 20px; width: 280px; padding: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 2px solid #eee; transition: 0.3s;
+        body { 
+            background: #ffc0cb; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            font-family: 'Arial', sans-serif;
         }
-
-        .btn { 
-            background: var(--main-red); color: white; border: none; padding: 12px 20px; 
-            font-size: 1.1rem; border-radius: 50px; cursor: pointer; width: 100%;
-            font-weight: bold; margin-top: 15px;
+        button { 
+            padding: 20px 40px; 
+            font-size: 20px; 
+            background: #ff4d4d; 
+            color: white; 
+            border: none; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-
-        /* Modal / Pop-up Styling - Ekkade error vachi untundi */
-        .modal { 
-            display: none; position: fixed; z-index: 1000; left: 0; top: 0; 
-            width: 100%; height: 100%; background: rgba(0,0,0,0.85); 
-        }
-        .modal-content { 
-            background: white; margin: 15% auto; padding: 30px; border-radius: 20px; 
-            width: 80%; max-width: 400px; border: 5px solid var(--gold); position: relative;
-        }
-
-        .dialogue-box { background: #fff3e0; padding: 10px; border-left: 5px solid var(--main-red); margin-bottom: 15px; text-align: left; }
-        .item-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #ccc; font-weight: bold; }
-        .close-btn { background: #333; color: white; border: none; padding: 10px; border-radius: 10px; margin-top: 15px; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>🔥 BADRINATH CHAT CENTRE 🔥</h1>
-    <p class="tagline">"Memu iche chat tinte... Meere maaku brand ambassador!"</p>
-</header>
+    <button onclick="startCompliments()">Vinni... Idhi Nee Kosame! (Click Here)</button>
 
-<div class="menu-container">
-    <div class="food-card">
-        <span style="font-size: 4rem;">🥣</span>
-        <h3>The Explosive Panipuri</h3>
-        <p>Noru kaluddam fix!</p>
-        <button class="btn" onclick="openMenu('panipuri')">Naku Kavali!</button>
-    </div>
+    <script>
+        function startCompliments() {
+            const messages = [
+                "1. Vinni... nuvvu 'Bommarillu' Hasini kante ekkuva matladthavu, kani 'Arjun Reddy' Preethi kante ekkuva silent ga champuthavu!",
+                "2. 'Pokiri' lo Mahesh Babu laaga... nuvvu okasari fix ayithe, nee andam evari maata vinadhu!",
+                "3. Nuvvu nadusthunte... 'Magadheera' lo 100 mandhi kadhu, 1000 mandhi flat aypovalsindhe!",
+                "4. Vinni, nee smile 'Pushpa' lo thaggede le! Adhi chusthe 'Khaleja' lo Devudu digivachinatte untundhi.",
+                "5. 'Bahubali' ki Devasena elaago... ma Vinni ki ee pogadthalu alaaga! (Queens andi meeru!)",
+                "6. Nuvvu makeup vesthe 'Kushi' Nadumu scene range lo craze... veyakapothe 'Fidaa' Bhanumathi la natural beauty!",
+                "7. 'Ala Vaikunthapurramuloo' lo kaalu chusi padiyaaru... kani nee kalla chuste kavi aypovalsindhe!",
+                "8. 'Dookudu' lo Samantha kante sweet... 'Gabbar Singh' lo Antyakshari scene kante funny nuvvu!",
+                "9. Vinni, nuvvu 'RRR' lo Bullet kante speed ga gundello ki dhusukelthavu!",
+                "10. Last but not least: Nuvvu 'Geetha Govindam' Madam vi kadhu... ma gunde ki 'Dream Girl' vi!"
+            ];
 
-    <div class="food-card">
-        <span style="font-size: 4rem;">🍛</span>
-        <h3>Captain Cutlet</h3>
-        <p>Okka mukka thinte chalu!</p>
-        <button class="btn" onclick="openMenu('cutlet')">Veguramu!</button>
-    </div>
-
-    <div class="food-card">
-        <span style="font-size: 4rem;">🥟</span>
-        <h3>Samosa Smash</h3>
-        <p>Taste ni penchi istam!</p>
-        <button class="btn" onclick="openMenu('samosa')">Idi Pettandi!</button>
-    </div>
-</div>
-
-<div id="foodModal" class="modal">
-    <div class="modal-content">
-        <h2 id="modalTitle" style="color: var(--main-red);"></h2>
-        <div class="dialogue-box">
-            <p id="modalDialogue" style="color: #b71c1c; font-weight: bold;"></p>
-        </div>
-        <div id="modalItems"></div>
-        <button class="close-btn" onclick="closeMenu()">Close</button>
-    </div>
-</div>
-
-<script>
-    const menuDetails = {
-        panipuri: {
-            title: "Pani Puri Menu",
-            dialogue: "🔥 'Dhimma thirigi mind block avthundo... vaade ee Badrinath Pani Puri!'",
-            items: [{n: "Masala Puri", p: "₹30"}, {n: "Dahi Puri", p: "₹60"}]
-        },
-        cutlet: {
-            title: "Cutlet Menu",
-            dialogue: "🦁 'Simham Ragada tinte ela untundo telusa?'",
-            items: [{n: "Veg Cutlet", p: "₹50"}, {n: "Cheese Ragada", p: "₹80"}]
-        },
-        samosa: {
-            title: "Samosa Menu",
-            dialogue: "🕺 'Okka sari fix ayithe... samosa nallelsindhe!'",
-            items: [{n: "Samosa Chat", p: "₹40"}, {n: "Special Mix", p: "₹55"}]
+            let i = 0;
+            function showNext() {
+                if (i < messages.length) {
+                    alert(messages[i]);
+                    i++;
+                    setTimeout(showNext, 500); // Prathi pop-up madhya 0.5 sec gap
+                } else {
+                    alert("Inka chaalu... ekkuva pogidithe gusa gusa lade pranam kastaa... gummadi kaaya la aypothundhi! 😂");
+                }
+            }
+            showNext();
         }
-    };
-
-    function openMenu(type) {
-        const data = menuDetails[type];
-        document.getElementById('modalTitle').innerText = data.title;
-        document.getElementById('modalDialogue').innerText = data.dialogue;
-        
-        let html = "";
-        data.items.forEach(item => {
-            html += `<div class="item-row"><span>${item.n}</span><span style="color:green;">${item.p}</span></div>`;
-        });
-        
-        document.getElementById('modalItems').innerHTML = html;
-        document.getElementById('foodModal').style.display = "block";
-    }
-
-    function closeMenu() {
-        document.getElementById('foodModal').style.display = "none";
-    }
-</script>
-
+    </script>
 </body>
 </html>
